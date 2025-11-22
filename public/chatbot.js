@@ -1,81 +1,49 @@
-// Grab elements
-const chatWindow = document.getElementById("chatWindow");
-const chatIcon = document.getElementById("chatIcon");
-const badge = document.getElementById("badge");
-const chatBody = document.getElementById("chatBody");
-const userMsg = document.getElementById("userMsg");
+function addOptions(options) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "bot-options";
 
-// Open / close chat
-function toggleChat() {
-  chatWindow.style.display =
-    chatWindow.style.display === "flex" ? "none" : "flex";
-  badge.style.display = "none";
+  options.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.className = "option-btn";
+    btn.textContent = opt.label;
+    
+    btn.onclick = () => {
+      wrapper.remove();
+
+      if (opt.action === "message") {
+        sendPredefinedMessage(opt.value);
+      } else if (opt.action === "link") {
+        window.open(opt.value, "_blank");
+      }
+    };
+
+    wrapper.appendChild(btn);
+  });
+
+  chatBody.appendChild(wrapper);
+  chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-chatIcon.addEventListener("click", toggleChat);
-
-// Send message handler
-function sendMsg() {
-  const text = userMsg.value.trim();
-  if (!text) return;
-
+function sendPredefinedMessage(text) {
   addUserBubble(text);
-  userMsg.value = "";
 
-  // Show temporary "typing…" bubble (optional)
-  const typingId = addBotBubble("Typing…");
-
-  // Call backend API
   fetch("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: text })
+    body: JSON.stringify({ message: text, prevIntent: lastIntent })
   })
-    .then((res) => res.json())
-    .then((data) => {
-      // remove typing bubble
-      removeBubble(typingId);
-      addBotBubble(data.response || "I’m not sure what you mean 🤔");
-    })
-    .catch(() => {
-      removeBubble(typingId);
-      addBotBubble("⚠️ Sorry, something went wrong. Please try again.");
-    });
-}
+  .then(res => res.json())
+  .then(data => {
+    addBotBubble(data.response);
+    if (data.tag) lastIntent = data.tag;
 
-// Add user bubble
-function addUserBubble(text) {
-  const div = document.createElement("div");
-  div.className = "user-msg";
-  div.textContent = text;
-  chatBody.appendChild(div);
-  chatBody.scrollTop = chatBody.scrollHeight;
-}
-
-// Add bot bubble – returns an id so we can remove it if needed
-let bubbleCounter = 0;
-function addBotBubble(text) {
-  const id = `bot-bubble-${bubbleCounter++}`;
-  const div = document.createElement("div");
-  div.className = "bot-msg";
-  div.textContent = text;
-  div.dataset.id = id;
-  chatBody.appendChild(div);
-  chatBody.scrollTop = chatBody.scrollHeight;
-  return id;
-}
-
-function removeBubble(id) {
-  const bubbles = chatBody.querySelectorAll(".bot-msg");
-  bubbles.forEach((b) => {
-    if (b.dataset.id === id) b.remove();
+    // Show next level options example:
+    if (data.tag === "products") {
+      addOptions([
+        { label: "🤖 AI Chatbots", action: "link", value: "https://example.com/chatbots" },
+        { label: "📈 Analytics Tools", action: "link", value: "https://example.com/analytics" },
+        { label: "☁️ Cloud Systems", action: "link", value: "https://example.com/cloud" }
+      ]);
+    }
   });
 }
-
-// Optional: send on Enter key
-userMsg.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    sendMsg();
-  }
-});

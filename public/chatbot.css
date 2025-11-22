@@ -128,3 +128,24 @@ body {
     color:white;
     font-size:20px;
 }
+.bot-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.option-btn {
+  background: #7a4dff;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.option-btn:hover {
+  background: #5d33cc;
+}
