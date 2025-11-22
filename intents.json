@@ -1,0 +1,109 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"],
+      "responses": ["Hello! How can I assist you today?"]
+    },
+    {
+      "tag": "about_bot",
+      "patterns": ["who are you", "what are you", "tell me about yourself", "what is your purpose"],
+      "responses": ["I am your better half in World of AI, here to help and assist you!"]
+    },
+    {
+      "tag": "how_are_you",
+      "patterns": ["how are you", "how are you doing", "what's up", "how's it going"],
+      "responses": ["Excited to work with you."]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye", "goodbye", "exit", "quit", "see you", "talk to you later"],
+      "responses": ["Goodbye! Have a great day!"]
+    },
+    {
+      "tag": "name",
+      "patterns": ["your name", "what is your name", "what's your name", "what do they call you"],
+      "responses": ["You can call me AI Assistant."]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["thank you", "thanks", "thx", "appreciate it"],
+      "responses": ["You're welcome! Happy to help."]
+    },
+    {
+      "tag": "affirmative",
+      "patterns": ["yes", "yeah", "yep", "sure", "okay", "ok"],
+      "responses": ["Great! What would you like to know?"]
+    },
+    {
+      "tag": "negative",
+      "patterns": ["no", "nope", "nah", "not really"],
+      "responses": ["No problem! Let me know if you need anything else."]
+    },
+    {
+      "tag": "confused",
+      "patterns": ["I don't understand", "what do you mean", "huh", "confused"],
+      "responses": ["Let me rephrase that. What specifically would you like to know?"]
+    },
+    {
+      "tag": "company_info",
+      "patterns": ["about your company", "tell me about your company", "what does your company do", "company info"],
+      "responses": ["MythoQuantum Explorers is a leading AI consultancy firm. We specialize in AI Automation and Data Analytics and have been serving customers since 2023."]
+    },
+    {
+      "tag": "location",
+      "patterns": ["where are you located", "your location", "company address", "where is your office", "office location"],
+      "responses": ["We are located at 123 Innovation Dr, Tech City, CA 94000. Feel free to visit us during business hours!"]
+    },
+    {
+      "tag": "contact",
+      "patterns": ["contact", "how to contact", "phone number", "email", "reach you", "contact details", "how can i contact", "get in touch"],
+      "responses": ["Please fill out our contact form, and we will get in touch with you soon."]
+    },
+    {
+      "tag": "services",
+      "patterns": ["which industry do you serve",
+                            "what industry do you serve",
+                            "industries you serve",
+                            "which industries",
+                            "industry sectors",
+                            "sectors",
+                            "what industries"],
+      "responses": [
+        "We offer Research and Development, AI Solutions, Process Automation, Data Analytics and Modelling, and Product Development.",
+        "Would you like us to connect you with our team for a personalized solution?",
+        "Great! Please fill out this form, and our team will get in touch with you soon."
+      ]
+    },
+    {
+      "tag": "products",
+      "patterns": ["products", "show products", "what products", "product list", "items", "list your products","what are your products",
+                    "tell me about your products",
+                    "show me your products",
+                    "product list",
+                    "what do you sell",
+                    "list of products",
+                    "product categories"],
+      "responses": ["We offer a wide range of products including AI Chatbots, Predictive Analytics, and Cloud Infrastructure."]
+    },
+    {
+      "tag": "product_details",
+      "patterns": ["product details", "tell me about product", "product info", "product description"],
+      "responses": ["Please visit our product page for detailed information. Here is the link: {www.mythoquantum.com/products}"]
+    },
+    {
+      "tag": "industry",
+      "patterns": ["industries", "which industries", "industry sectors", "sectors", "what industries"],
+      "responses": [
+        "We serve multiple industries including Healthcare, Finance, Supply Chain and Logistics, Education, and Marketing.",
+        "Which industry are you interested in?",
+        "Please let us know if you want information about products or specific solutions related to that industry."
+      ]
+    },
+    {
+      "tag": "fallback",
+      "patterns": ["*"],
+      "responses": ["I'm sorry, I don't understand that. Can you please rephrase?"]
+    }
+  ]
+}
