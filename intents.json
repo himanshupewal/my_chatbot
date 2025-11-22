@@ -77,7 +77,7 @@
     },
     {
       "tag": "products",
-      "patterns": ["products", "show products", "what products", "product list", "items", "list your products","what are your products",
+      "patterns": ["products","product", "show products", "what products", "product list", "items", "list your products","what are your products",
                     "tell me about your products",
                     "show me your products",
                     "product list",
