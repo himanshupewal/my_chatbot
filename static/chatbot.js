@@ -1,61 +1,29 @@
-let isOpen = false;
+// Toggle Chat Visibility
+const windowEl = document.getElementById("chatWindow");
+const iconEl = document.getElementById("chatIcon");
+const badgeEl = document.getElementById("badge");
+const bodyEl = document.getElementById("chatBody");
+const inputEl = document.getElementById("userMsg");
+
+iconEl.onclick = toggleChat;
 
 function toggleChat() {
-    const win = document.getElementById("chatWindow");
-    isOpen = !isOpen;
-    win.classList.toggle("open");
+    windowEl.style.display = windowEl.style.display === "flex" ? "none" : "flex";
+    badgeEl.style.display = "none";
 }
 
-function handleKeyPress(e) {
-    if (e.key === "Enter") sendMessage();
+// Display message in UI only (no backend yet)
+function sendMsg(){
+    const text = inputEl.value.trim();
+    if(!text) return;
+    addUserMsg(text);
+    inputEl.value = "";
 }
 
-function sendMessage() {
-    const input = document.getElementById("messageInput");
-    const msg = input.value.trim();
-    if (!msg) return;
-
-    addMessage(msg, "user");
-    input.value = "";
-
-    showTyping();
-
-    fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg })
-    })
-    .then(res => res.json())
-    .then(data => {
-        hideTyping();
-        addMessage(data.response, "bot");
-    })
-    .catch(() => {
-        hideTyping();
-        addMessage("Server error 😢", "bot");
-    });
-}
-
-function addMessage(text, sender) {
-    const container = document.getElementById("chatMessages");
-    const el = document.createElement("div");
-    el.className = `message ${sender}`;
-
-    el.innerHTML = `
-        <div class="message-avatar">${sender === "bot" ? "AI" : "You"}</div>
-        <div class="message-content">
-            <div class="message-bubble">${text}</div>
-        </div>
-    `;
-
-    container.appendChild(el);
-    container.scrollTop = container.scrollHeight;
-}
-
-function showTyping() {
-    document.getElementById("typingIndicator").classList.add("active");
-}
-
-function hideTyping() {
-    document.getElementById("typingIndicator").classList.remove("active");
+function addUserMsg(text){
+    const msg = document.createElement("div");
+    msg.className = "user-msg";
+    msg.innerText = text;
+    bodyEl.appendChild(msg);
+    bodyEl.scrollTop = bodyEl.scrollHeight;
 }

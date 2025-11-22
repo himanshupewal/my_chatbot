@@ -1,58 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Himanshu Website + Chatbot UI</title>
 
-    <link rel="stylesheet" href="/static/chatbott.css">
+<!-- Linking CSS & JS -->
+<link rel="stylesheet" href="/static/chatbot.css">
+<script defer src="/static/chatbot.js"></script>
 </head>
+
 <body>
 
-    <h2>Welcome to My AI Chatbot</h2>
+<h1>Welcome to Our Website</h1>
+<p>This page includes a floating chatbot widget UI</p>
 
-    <div class="chatbot-container">
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <div class="chat-avatar">AI</div>
-                    <div class="chat-header-text">
-                        <h3>Support Chat</h3>
-                        <p>Online</p>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="toggleChat()">×</button>
-            </div>
+<!-- Chat Icon -->
+<div class="chat-icon" id="chatIcon">
+  💬
+  <div class="badge" id="badge">1</div>
+</div>
 
-            <div class="chat-messages" id="chatMessages">
-                <div class="message bot">
-                    <div class="message-avatar">AI</div>
-                    <div class="message-content">
-                        <div class="message-bubble">Hello! 👋 How can I help you?</div>
-                        <div class="message-time">Just now</div>
-                    </div>
-                </div>
-            </div>
+<!-- Chat Window -->
+<div class="chat-window" id="chatWindow">
 
-            <div class="typing-indicator" id="typingIndicator">
-                <div class="message-avatar">AI</div>
-                <div class="typing-dots">
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                </div>
-            </div>
-
-            <div class="chat-input">
-                <input type="text" id="messageInput" placeholder="Type here..."
-                    onkeypress="handleKeyPress(event)">
-                <button class="send-btn" onclick="sendMessage()">➤</button>
+    <div class="chat-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <div class="chat-avatar">HB</div>
+            <div class="header-text">
+                <strong>Support Chat</strong>
+                <p>Online now</p>
             </div>
         </div>
-
-        <div class="chat-icon" id="chatIcon" onclick="toggleChat()">💬</div>
+        <span onclick="toggleChat()" class="close-btn">✕</span>
     </div>
 
-<script src="/static/chatbot.js"></script>
+    <div class="chat-body" id="chatBody">
+        <div class="bot-msg">Hi there! 👋 How can I help you today?</div>
+    </div>
+
+    <div class="chat-input">
+        <input id="userMsg" type="text" placeholder="Type your message...">
+        <button class="send-btn" onclick="sendMsg()">➤</button>
+    </div>
+</div>
+
 </body>
 </html>

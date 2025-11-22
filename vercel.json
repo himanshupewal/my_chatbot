@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "framework": "vite",
+  "name": "himanshu-chatbot",
   "builds": [
-    { "src": "static/**/*", "use": "@vercel/static" },
-    { "src": "api/chat.js", "use": "@vercel/node" }
+    { "src": "index.html", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/api/chat", "dest": "/api/chat.js" },
-    { "src": "/(.*)", "dest": "/static/index.html" }
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
