@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Himanshu Bot - Smart AI Assistant</title>
+<title>Himanshu Website + Chatbot UI</title>
 
-<link rel="stylesheet" href="/static/chatbot.css">
-<script defer src="/static/chatbot.js"></script>
+<link rel="stylesheet" href="/chatbot.css">
+<script defer src="/chatbot.js"></script>
+
 </head>
 
 <body>
 
-<h1>Welcome to My Website</h1>
-<p>Chat with 🤖 Himanshu Bot — your smart AI assistant!</p>
+<h1>Welcome to Our Website</h1>
+<p>This page includes a floating chatbot widget UI</p>
 
 <!-- Chat Icon -->
-<div class="chat-icon" id="chatIcon">
-  💬
+<div class="chat-icon" id="chatIcon">💬
   <div class="badge" id="badge">1</div>
 </div>
 
@@ -25,23 +25,24 @@
 
     <div class="chat-header">
         <div style="display:flex; align-items:center; gap:10px;">
-            <div class="chat-avatar">🤖</div>
+            <div class="chat-avatar">HB</div>
             <div class="header-text">
-                <strong>HIMANSHU BOT</strong>
-                <p>🟢 Online</p>
+                <strong>MQE</strong>
+                <p>Online now</p>
             </div>
         </div>
-        <span onclick="toggleChat()" class="close-btn">✕</span>
+        <span class="close-btn" onclick="toggleChat()">✕</span>
     </div>
 
     <div class="chat-body" id="chatBody">
-        <div class="bot-msg">Hello! 👋 I’m Himanshu Bot. What can I help you with today?</div>
+        <div class="bot-msg">Hi there! 👋 How can I help you today?</div>
     </div>
 
     <div class="chat-input">
         <input id="userMsg" type="text" placeholder="Type your message...">
         <button class="send-btn" onclick="sendMsg()">➤</button>
     </div>
+
 </div>
 
 </body>
