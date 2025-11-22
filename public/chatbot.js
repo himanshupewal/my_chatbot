@@ -7,9 +7,11 @@ const userMsg = document.getElementById("userMsg");
 
 // Open / close chat
 function toggleChat() {
-  chatWindow.style.display =
-    chatWindow.style.display === "flex" ? "none" : "flex";
-  badge.style.display = "none";
+  const isVisible = chatWindow.style.display === "flex";
+  chatWindow.style.display = isVisible ? "none" : "flex";
+  if (!isVisible) {
+    badge.style.display = "none";
+  }
 }
 
 chatIcon.addEventListener("click", toggleChat);
@@ -22,8 +24,8 @@ function sendMsg() {
   addUserBubble(text);
   userMsg.value = "";
 
-  // Show temporary "typing…" bubble (optional)
-  const typingId = addBotBubble("Typing…");
+  // Show temporary "typing…" bubble
+  const typingId = addTypingBubble();
 
   // Call backend API
   fetch("/api/chat", {
@@ -46,33 +48,51 @@ function sendMsg() {
 // Add user bubble
 function addUserBubble(text) {
   const div = document.createElement("div");
-  div.className = "user-msg";
+  div.className = "message user-msg";
   div.textContent = text;
   chatBody.appendChild(div);
-  chatBody.scrollTop = chatBody.scrollHeight;
+  scrollToBottom();
 }
 
-// Add bot bubble – returns an id so we can remove it if needed
-let bubbleCounter = 0;
+// Add bot bubble
 function addBotBubble(text) {
-  const id = `bot-bubble-${bubbleCounter++}`;
   const div = document.createElement("div");
-  div.className = "bot-msg";
+  div.className = "message bot-msg";
   div.textContent = text;
-  div.dataset.id = id;
   chatBody.appendChild(div);
-  chatBody.scrollTop = chatBody.scrollHeight;
+  scrollToBottom();
+}
+
+// Add typing bubble
+let bubbleCounter = 0;
+function addTypingBubble() {
+  const id = `typing-${bubbleCounter++}`;
+  const div = document.createElement("div");
+  div.className = "typing-indicator";
+  div.dataset.id = id;
+
+  // Create 3 dots
+  for (let i = 0; i < 3; i++) {
+    const dot = document.createElement("div");
+    dot.className = "typing-dot";
+    div.appendChild(dot);
+  }
+
+  chatBody.appendChild(div);
+  scrollToBottom();
   return id;
 }
 
 function removeBubble(id) {
-  const bubbles = chatBody.querySelectorAll(".bot-msg");
-  bubbles.forEach((b) => {
-    if (b.dataset.id === id) b.remove();
-  });
+  const bubble = chatBody.querySelector(`[data-id="${id}"]`);
+  if (bubble) bubble.remove();
 }
 
-// Optional: send on Enter key
+function scrollToBottom() {
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+// Send on Enter key
 userMsg.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();

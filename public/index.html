@@ -1,49 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Himanshu Website + Chatbot UI</title>
-
-<link rel="stylesheet" href="/chatbot.css">
-<script defer src="/chatbot.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Chatbot UI</title>
+    <link rel="stylesheet" href="/chatbot.css">
+    <script defer src="/chatbot.js"></script>
 </head>
 
 <body>
 
-<h1>Welcome to Our Website</h1>
-<p>This page includes a floating chatbot widget UI</p>
+    <!-- Main Page Content -->
+    <div style="text-align: center; padding: 40px;">
+        <h1 style="font-weight: 700; margin-bottom: 10px;">Welcome to the Future</h1>
+        <p style="color: #94a3b8; max-width: 600px; margin: 0 auto;">
+            Experience our new AI-powered assistant. Click the floating button below to start chatting.
+        </p>
+    </div>
 
-<!-- Chat Icon -->
-<div class="chat-icon" id="chatIcon">💬
-  <div class="badge" id="badge">1</div>
-</div>
+    <!-- Chat Icon -->
+    <div class="chat-icon" id="chatIcon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <div class="badge" id="badge">1</div>
+    </div>
 
-<!-- Chat Window -->
-<div class="chat-window" id="chatWindow">
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
 
-    <div class="chat-header">
-        <div style="display:flex; align-items:center; gap:10px;">
-            <div class="chat-avatar">HB</div>
-            <div class="header-text">
-                <strong>MQE</strong>
-                <p>Online now</p>
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="header-info">
+                <div class="chat-avatar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" />
+                        <path d="M4 11v2a6 6 0 0 0 12 0v-2" />
+                        <path d="M12 19v2" />
+                        <rect width="16" height="10" x="4" y="8" rx="2" />
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <h3>AI Assistant</h3>
+                    <p><span class="status-dot"></span> Online now</p>
+                </div>
+            </div>
+            <div class="close-btn" onclick="toggleChat()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
             </div>
         </div>
-        <span class="close-btn" onclick="toggleChat()">✕</span>
-    </div>
 
-    <div class="chat-body" id="chatBody">
-        <div class="bot-msg">Hi there! 👋 How can I help you today?</div>
-    </div>
+        <!-- Chat Body -->
+        <div class="chat-body" id="chatBody">
+            <div class="message bot-msg">
+                Hello! 👋 I'm your AI assistant. How can I help you today?
+            </div>
+        </div>
 
-    <div class="chat-input">
-        <input id="userMsg" type="text" placeholder="Type your message...">
-        <button class="send-btn" onclick="sendMsg()">➤</button>
-    </div>
+        <!-- Input Area -->
+        <div class="chat-input">
+            <input id="userMsg" type="text" placeholder="Type your message..." autocomplete="off">
+            <button class="send-btn" onclick="sendMsg()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
 
-</div>
+    </div>
 
 </body>
+
 </html>
