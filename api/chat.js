@@ -1,37 +1,40 @@
 const fs = require("fs");
 const path = require("path");
 
-// Load intents.json from file system
 const intentsPath = path.join(__dirname, "../intents.json");
 const intents = JSON.parse(fs.readFileSync(intentsPath));
+
+// Basic token match helper
+function matchIntent(message, patterns) {
+  const msgWords = message.split(/\s+/);
+  return patterns.some(pattern => {
+    const patternWords = pattern.toLowerCase().split(/\s+/);
+    return patternWords.every(word =>
+      msgWords.some(msgWord => msgWord.includes(word))
+    );
+  });
+}
 
 module.exports = (req, res) => {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Only POST Allowed" });
   }
 
-  const message = (req.body.message || "").toLowerCase();
+  const message = (req.body.message || "").toLowerCase().trim();
+  if (!message) {
+    return res.status(200).json({ response: "Please type something 🙂" });
+  }
 
-  // Iterate through each intent & match patterns
   for (const intent of intents.intents) {
-    for (const pattern of intent.patterns) {
-      if (message.includes(pattern.toLowerCase())) {
-        const responses = intent.responses;
-        const reply =
-          responses[Math.floor(Math.random() * responses.length)];
-
-        return res.status(200).json({
-          response: reply,
-          intent: intent.tag
-        });
-      }
+    if (matchIntent(message, intent.patterns)) {
+      const responses = intent.responses;
+      const reply = responses[Math.floor(Math.random() * responses.length)];
+      return res.status(200).json({ response: reply, tag: intent.tag });
     }
   }
 
-  // Default fallback response when nothing matches
   return res.status(200).json({
-    response:
-      "I'm not sure I understand 🤔. Can you provide more details?",
-    intent: "unknown"
+    response: "I'm sorry, I didn't understand that 🤔. Can you rephrase?",
+    tag: "fallback"
   });
 };
