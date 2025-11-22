@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Himanshu Website + Chatbot UI</title>
 
-<!-- Correct Static File Paths -->
 <link rel="stylesheet" href="/chatbot.css">
 <script defer src="/chatbot.js"></script>
+
 </head>
 
 <body>
@@ -16,8 +16,7 @@
 <p>This page includes a floating chatbot widget UI</p>
 
 <!-- Chat Icon -->
-<div class="chat-icon" id="chatIcon">
-  💬
+<div class="chat-icon" id="chatIcon">💬
   <div class="badge" id="badge">1</div>
 </div>
 
@@ -32,7 +31,7 @@
                 <p>Online now</p>
             </div>
         </div>
-        <span onclick="toggleChat()" class="close-btn">✕</span>
+        <span class="close-btn" onclick="toggleChat()">✕</span>
     </div>
 
     <div class="chat-body" id="chatBody">
@@ -43,6 +42,7 @@
         <input id="userMsg" type="text" placeholder="Type your message...">
         <button class="send-btn" onclick="sendMsg()">➤</button>
     </div>
+
 </div>
 
 </body>
