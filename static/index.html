@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Chatbot</title>
+    <title>Chatbot</title>
 
-    <!-- Chatbot Stylesheet -->
     <link rel="stylesheet" href="/static/chatbot.css">
 </head>
 <body>
 
-    <h1>Welcome to My AI Support Chat</h1>
-    <p>Click the chat icon to start chatting!</p>
+    <h2>Welcome to My AI Chatbot</h2>
 
-    <!-- Chatbot Widget HTML -->
     <div class="chatbot-container">
         <div class="chat-window" id="chatWindow">
             <div class="chat-header">
@@ -21,7 +18,7 @@
                     <div class="chat-avatar">AI</div>
                     <div class="chat-header-text">
                         <h3>Support Chat</h3>
-                        <p>Online now</p>
+                        <p>Online</p>
                     </div>
                 </div>
                 <button class="close-btn" onclick="toggleChat()">×</button>
@@ -31,9 +28,7 @@
                 <div class="message bot">
                     <div class="message-avatar">AI</div>
                     <div class="message-content">
-                        <div class="message-bubble">
-                            Hi there! 👋 How can I help you today?
-                        </div>
+                        <div class="message-bubble">Hello! 👋 How can I help you?</div>
                         <div class="message-time">Just now</div>
                     </div>
                 </div>
@@ -49,24 +44,15 @@
             </div>
 
             <div class="chat-input">
-                <input 
-                    type="text" 
-                    id="messageInput" 
-                    placeholder="Type your message..."
-                    onkeypress="handleKeyPress(event)"
-                />
+                <input type="text" id="messageInput" placeholder="Type here..."
+                    onkeypress="handleKeyPress(event)">
                 <button class="send-btn" onclick="sendMessage()">➤</button>
             </div>
         </div>
 
-        <div class="chat-icon" id="chatIcon" onclick="toggleChat()">
-            💬
-            <div class="notification-badge" id="notificationBadge">1</div>
-        </div>
+        <div class="chat-icon" id="chatIcon" onclick="toggleChat()">💬</div>
     </div>
 
-    <!-- Chatbot JavaScript -->
-    <script src="/static/chatbot.js"></script>
-
+<script src="/static/chatbot.js"></script>
 </body>
 </html>

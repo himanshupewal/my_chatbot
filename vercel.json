@@ -1,15 +1,9 @@
 {
   "version": 2,
-  "framework": "none",
+  "framework": "vite",
   "builds": [
-    {
-      "src": "static/**/*",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "api/chat.js",
-      "use": "@vercel/node"
-    }
+    { "src": "static/**/*", "use": "@vercel/static" },
+    { "src": "api/chat.js", "use": "@vercel/node" }
   ],
   "routes": [
     { "src": "/api/chat", "dest": "/api/chat.js" },
