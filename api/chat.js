@@ -1,29 +1,37 @@
-const intents = require("../intents.json");
+const fs = require("fs");
+const path = require("path");
+
+// Load intents.json from file system
+const intentsPath = path.join(__dirname, "../intents.json");
+const intents = JSON.parse(fs.readFileSync(intentsPath));
 
 module.exports = (req, res) => {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Only POST allowed" });
+    return res.status(405).json({ error: "Only POST Allowed" });
   }
 
   const message = (req.body.message || "").toLowerCase();
 
-  if (!message) {
-    return res.status(400).json({ error: "No message provided" });
-  }
-
-  // Simple pattern matching
+  // Iterate through each intent & match patterns
   for (const intent of intents.intents) {
     for (const pattern of intent.patterns) {
       if (message.includes(pattern.toLowerCase())) {
         const responses = intent.responses;
-        const reply = responses[Math.floor(Math.random() * responses.length)];
-        return res.status(200).json({ response: reply, tag: intent.tag });
+        const reply =
+          responses[Math.floor(Math.random() * responses.length)];
+
+        return res.status(200).json({
+          response: reply,
+          intent: intent.tag
+        });
       }
     }
   }
 
-  // Fallback if nothing matched
+  // Default fallback response when nothing matches
   return res.status(200).json({
-    response: "Hmm, I'm not sure I understand 🤔. Could you rephrase that?"
+    response:
+      "I'm not sure I understand 🤔. Can you provide more details?",
+    intent: "unknown"
   });
 };
