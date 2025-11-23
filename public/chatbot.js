@@ -34,15 +34,32 @@ function sendMsg() {
     body: JSON.stringify({ message: text })
   })
     .then((res) => res.json())
-    .then((data) => {
-      // remove typing bubble
-      removeBubble(typingId);
-      addBotBubble(data.response || "I’m not sure what you mean 🤔");
-    })
-    .catch(() => {
-      removeBubble(typingId);
-      addBotBubble("⚠️ Sorry, something went wrong. Please try again.");
+.then((data) => {
+  removeBubble(typingId);
+
+  // Show main bot response
+  addBotBubble(data.response || "I’m not sure what you mean 🤔");
+
+  // If backend includes clickable options
+  if (data.options && Array.isArray(data.options)) {
+    const btnContainer = document.createElement("div");
+    btnContainer.className = "bot-options";
+
+    data.options.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.className = "option-btn";
+      btn.textContent = opt.label;
+      btn.onclick = () => {
+        window.open(opt.url, "_blank");
+      };
+      btnContainer.appendChild(btn);
     });
+
+    chatBody.appendChild(btnContainer);
+    scrollToBottom();
+  }
+})
+;
 }
 
 // Add user bubble
@@ -99,3 +116,6 @@ userMsg.addEventListener("keydown", (e) => {
     sendMsg();
   }
 });
+
+
+

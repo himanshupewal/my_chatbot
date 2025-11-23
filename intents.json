@@ -173,27 +173,22 @@
       ]
     },
     {
-      "tag": "products",
-      "patterns": [
-        "products",
-        "product",
-        "show products",
-        "what products",
-        "product list",
-        "items",
-        "list your products",
-        "what are your products",
-        "tell me about your products",
-        "show me your products",
-        "product list",
-        "what do you sell",
-        "list of products",
-        "product categories"
-      ],
-      "responses": [
-        "Healthcare Information Management System\nPragyan AI\nCargo Monitoring System\nInternal Tracker System\nVyuh Shastra in intents"
-      ]
-    },
+  "tag": "products",
+  "patterns": [
+    "products", "show products", "what products", "product list", "items",
+    "list your products", "what are your products", "tell me about your products",
+    "show me your products", "product categories"
+  ],
+  "responses": ["Here are our products 👇"],
+  "options": [
+    { "label": "Healthcare Information System", "url": "https://yourwebsite.com/hims" },
+    { "label": "Pragyan AI", "url": "https://yourwebsite.com/pragyan" },
+    { "label": "Cargo Monitoring System", "url": "https://yourwebsite.com/cargo" },
+    { "label": "Internal Tracker System", "url": "https://yourwebsite.com/tracker" },
+    { "label": "Vyuh Shastra", "url": "https://yourwebsite.com/vyuh" }
+  ]
+}
+,
     {
       "tag": "product_details",
       "patterns": [
