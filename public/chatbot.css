@@ -217,7 +217,7 @@ body {
     border-bottom-left-radius: 4px;
     font-size: 14px;
     line-height: 1.5;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     animation: fadeIn 0.25s ease;
 }
 
@@ -250,7 +250,7 @@ body {
     cursor: pointer;
     transition: 0.2s ease-in-out;
     box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
-    
+
     white-space: nowrap;
 }
 

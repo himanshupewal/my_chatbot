@@ -117,7 +117,7 @@
     {
       "tag": "company_info",
       "patterns": [
-        "about your company",
+        "about your company","company","about",
         "tell me about your company",
         "what does your company do",
         "company info"
@@ -131,12 +131,12 @@
       "patterns": [
         "where are you located",
         "your location",
-        "company address",
+        "company address","address",
         "where is your office",
         "office location"
       ],
       "responses": [
-        "We are located at 123 Innovation Dr, Tech City, CA 94000. Feel free to visit us during business hours!"
+        "We are located 5th floor CDC building, BHU, Lanka Varanasi, Uttar Pradesh ,221005. Feel free to visit us during business hours!"
       ]
     },
     {
