@@ -86,7 +86,13 @@ function showBotOptions(options) {
     const btn = document.createElement("button");
     btn.className = "option-btn";
     btn.textContent = opt.label;
-    btn.onclick = () => window.open(opt.url, "_blank");
+    btn.onclick = () => {
+  if (opt.url.startsWith("mailto:")) {
+    location.href = opt.url;
+  } else {
+    window.open(opt.url, "_blank");
+  }
+};
     container.appendChild(btn);
   });
 
@@ -147,3 +153,7 @@ userMsg.addEventListener("keydown", (e) => {
     sendMsg();
   }
 });
+
+
+
+btn.onclick = () => window.open(opt.url, "_blank");
