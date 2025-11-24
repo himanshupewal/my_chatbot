@@ -95,36 +95,21 @@ function showBotOptions(options) {
 }
 
 // Follow-up quick actions (contact buttons)
-function showBotOptions(options, followUp) {
+function showFollowUpActions(actions) {
   const container = document.createElement("div");
   container.className = "bot-options";
 
-  options.forEach(opt => {
+  actions.forEach((action) => {
     const btn = document.createElement("button");
-    btn.className = "option-btn";
-    btn.textContent = opt.label;
-
-    btn.onclick = () => {
-      window.open(opt.url, "_blank"); // Open product page
-
-      // Delay Follow-Up Response 5 sec
-      if (followUp) {
-        setTimeout(() => {
-          addBotBubble(followUp.text);
-          if (followUp.quickActions) {
-            showFollowUpActions(followUp.quickActions);
-          }
-        }, 5000);
-      }
-    };
-
+    btn.className = "option-btn follow-up-btn";
+    btn.textContent = action.label;
+    btn.onclick = () => window.open(action.url, "_blank");
     container.appendChild(btn);
   });
 
   chatBody.appendChild(container);
   scrollToBottom();
 }
-
 
 // Typing dots
 let bubbleCounter = 0;
@@ -162,5 +147,3 @@ userMsg.addEventListener("keydown", (e) => {
     sendMsg();
   }
 });
-
-
