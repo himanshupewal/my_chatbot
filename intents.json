@@ -146,7 +146,9 @@
     "Would you like us to connect you with our team for a personalized solution?"
   ],
   "options": [
-     { "label":  "📩 Email Team", "url": "mailto:info@mytoquantumexplorers@gmail.com" },
+     { "label": "📩 Email Team",
+  "url": "https://mail.google.com/mail/?view=cm&fs=1&to=info@mythoquantumexplorers@gmail.com&su=Inquiry&body=Hi%20Team,"
+       },
       { "label": "💬 WhatsApp", "url": "https://wa.me/" }
   ]
 },
@@ -188,7 +190,9 @@
   "followUp": {
     "text": "Would you like us to connect you with our team for a personalized solution?",
     "quickActions": [
-      { "label":  "📩 Email Team", "url": "mailto:info@mytoquantumexplorers@gmail.com" },
+      { "label": "📩 Email Team",
+  "url": "https://mail.google.com/mail/?view=cm&fs=1&to=info@mythoquantumexplorers@gmail.com&su=Inquiry&body=Hi%20Team,"
+       },
       { "label": "💬 WhatsApp", "url": "https://wa.me/" }
     ]
   }
@@ -232,7 +236,9 @@
   "followUp": {
     "text": "Would you like us to connect you with our team for a personalized solution?",
     "quickActions": [
-      { "label":  "📩 Email Team", "url": "mailto:info@mytoquantumexplorers@gmail.com" },
+       { "label": "📩 Email Team",
+  "url": "https://mail.google.com/mail/?view=cm&fs=1&to=info@mythoquantumexplorers@gmail.com&su=Inquiry&body=Hi%20Team,"
+       },
       { "label": "💬 WhatsApp", "url": "https://wa.me/" }
     ]
   }
