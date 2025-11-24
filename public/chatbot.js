@@ -5,7 +5,7 @@ const badge = document.getElementById("badge");
 const chatBody = document.getElementById("chatBody");
 const userMsg = document.getElementById("userMsg");
 
-// Open / close chat
+// Toggle chat window
 function toggleChat() {
   const isVisible = chatWindow.style.display === "flex";
   chatWindow.style.display = isVisible ? "none" : "flex";
@@ -14,7 +14,7 @@ function toggleChat() {
 
 chatIcon.addEventListener("click", toggleChat);
 
-// Send message handler
+// Send message
 function sendMsg() {
   const text = userMsg.value.trim();
   if (!text) return;
@@ -27,23 +27,31 @@ function sendMsg() {
   fetch("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: text })
+    body: JSON.stringify({ message: text }),
   })
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       removeBubble(typingId);
 
-      // Main bot response
+      // Bot main reply
       addBotBubble(data.response);
 
-      // ⬇️ Handle clickable options if present 👇
+      // Show product/industry options
       if (data.options && Array.isArray(data.options)) {
         showBotOptions(data.options);
       }
 
-      // ⬇️ Handle follow-up message if backend sends it
-      if (data.followUp) {
-        setTimeout(() => addBotBubble(data.followUp), 800);
+      // Show Team Contact Quick Actions
+      if (data.followUp && data.followUp.text) {
+        setTimeout(() => {
+          addBotBubble(data.followUp.text);
+          if (
+            data.followUp.quickActions &&
+            Array.isArray(data.followUp.quickActions)
+          ) {
+            showFollowUpActions(data.followUp.quickActions);
+          }
+        }, 800);
       }
     })
     .catch(() => {
@@ -52,7 +60,7 @@ function sendMsg() {
     });
 }
 
-// Message bubbles
+// Create chat bubbles
 function addUserBubble(text) {
   const bubble = document.createElement("div");
   bubble.className = "user-msg";
@@ -69,12 +77,12 @@ function addBotBubble(text) {
   scrollToBottom();
 }
 
-// Clickable product buttons 👇
+// Dynamic buttons (product list style)
 function showBotOptions(options) {
   const container = document.createElement("div");
   container.className = "bot-options";
 
-  options.forEach(opt => {
+  options.forEach((opt) => {
     const btn = document.createElement("button");
     btn.className = "option-btn";
     btn.textContent = opt.label;
@@ -86,7 +94,24 @@ function showBotOptions(options) {
   scrollToBottom();
 }
 
-// Typing indicator
+// Follow-up quick actions (contact buttons)
+function showFollowUpActions(actions) {
+  const container = document.createElement("div");
+  container.className = "bot-options";
+
+  actions.forEach((action) => {
+    const btn = document.createElement("button");
+    btn.className = "option-btn follow-up-btn";
+    btn.textContent = action.label;
+    btn.onclick = () => window.open(action.url, "_blank");
+    container.appendChild(btn);
+  });
+
+  chatBody.appendChild(container);
+  scrollToBottom();
+}
+
+// Typing dots
 let bubbleCounter = 0;
 function addTypingBubble() {
   const id = `typing-${bubbleCounter++}`;
@@ -110,12 +135,13 @@ function removeBubble(id) {
   if (bubble) bubble.remove();
 }
 
+// Scroll always to bottom
 function scrollToBottom() {
   chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-// Enter key send
-userMsg.addEventListener("keydown", e => {
+// Send on Enter
+userMsg.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     sendMsg();
