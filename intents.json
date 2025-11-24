@@ -146,8 +146,8 @@
     "Would you like us to connect you with our team for a personalized solution?"
   ],
   "options": [
-    { "label": "✉️ Email Us", "url": "mailto:contact@mythoquantum.com" },
-    { "label": "💬 WhatsApp", "url": "https://wa.me/91XXXXXXXXXX" }
+     { "label":  "📩 Email Team", "url": "mailto:info@mytoquantumexplorers@gmail.com" },
+      { "label": "💬 WhatsApp", "url": "https://wa.me/" }
   ]
 },
     {
