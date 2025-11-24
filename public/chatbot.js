@@ -9,9 +9,7 @@ const userMsg = document.getElementById("userMsg");
 function toggleChat() {
   const isVisible = chatWindow.style.display === "flex";
   chatWindow.style.display = isVisible ? "none" : "flex";
-  if (!isVisible) {
-    badge.style.display = "none";
-  }
+  if (!isVisible) badge.style.display = "none";
 }
 
 chatIcon.addEventListener("click", toggleChat);
@@ -24,63 +22,71 @@ function sendMsg() {
   addUserBubble(text);
   userMsg.value = "";
 
-  // Show temporary "typing…" bubble
   const typingId = addTypingBubble();
 
-  // Call backend API
   fetch("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message: text })
   })
-    .then((res) => res.json())
-.then((data) => {
-  removeBubble(typingId);
+    .then(res => res.json())
+    .then(data => {
+      removeBubble(typingId);
 
-  // Show main bot response
-  addBotBubble(data.response || "I’m not sure what you mean 🤔");
+      // Main bot response
+      addBotBubble(data.response);
 
-  // If backend includes clickable options
-  if (data.options && Array.isArray(data.options)) {
-    const btnContainer = document.createElement("div");
-    btnContainer.className = "bot-options";
+      // ⬇️ Handle clickable options if present 👇
+      if (data.options && Array.isArray(data.options)) {
+        showBotOptions(data.options);
+      }
 
-    data.options.forEach(opt => {
-      const btn = document.createElement("button");
-      btn.className = "option-btn";
-      btn.textContent = opt.label;
-      btn.onclick = () => {
-        window.open(opt.url, "_blank");
-      };
-      btnContainer.appendChild(btn);
+      // ⬇️ Handle follow-up message if backend sends it
+      if (data.followUp) {
+        setTimeout(() => addBotBubble(data.followUp), 800);
+      }
+    })
+    .catch(() => {
+      removeBubble(typingId);
+      addBotBubble("⚠️ Something went wrong! Try again.");
     });
-
-    chatBody.appendChild(btnContainer);
-    scrollToBottom();
-  }
-})
-;
 }
 
-// Add user bubble
+// Message bubbles
 function addUserBubble(text) {
-  const div = document.createElement("div");
-  div.className = "message user-msg";
-  div.textContent = text;
-  chatBody.appendChild(div);
+  const bubble = document.createElement("div");
+  bubble.className = "user-msg";
+  bubble.textContent = text;
+  chatBody.appendChild(bubble);
   scrollToBottom();
 }
 
-// Add bot bubble
 function addBotBubble(text) {
-  const div = document.createElement("div");
-  div.className = "message bot-msg";
-  div.textContent = text;
-  chatBody.appendChild(div);
+  const bubble = document.createElement("div");
+  bubble.className = "bot-msg";
+  bubble.textContent = text;
+  chatBody.appendChild(bubble);
   scrollToBottom();
 }
 
-// Add typing bubble
+// Clickable product buttons 👇
+function showBotOptions(options) {
+  const container = document.createElement("div");
+  container.className = "bot-options";
+
+  options.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.className = "option-btn";
+    btn.textContent = opt.label;
+    btn.onclick = () => window.open(opt.url, "_blank");
+    container.appendChild(btn);
+  });
+
+  chatBody.appendChild(container);
+  scrollToBottom();
+}
+
+// Typing indicator
 let bubbleCounter = 0;
 function addTypingBubble() {
   const id = `typing-${bubbleCounter++}`;
@@ -88,7 +94,6 @@ function addTypingBubble() {
   div.className = "typing-indicator";
   div.dataset.id = id;
 
-  // Create 3 dots
   for (let i = 0; i < 3; i++) {
     const dot = document.createElement("div");
     dot.className = "typing-dot";
@@ -109,13 +114,10 @@ function scrollToBottom() {
   chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-// Send on Enter key
-userMsg.addEventListener("keydown", (e) => {
+// Enter key send
+userMsg.addEventListener("keydown", e => {
   if (e.key === "Enter") {
     e.preventDefault();
     sendMsg();
   }
 });
-
-
-

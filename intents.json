@@ -180,7 +180,7 @@
     "show me your products", "product categories"
   ],
   "responses": [
-    "Here are our products 👇",
+    "Here are our products.",
     "Would you like us to connect you with our team for a personalized solution?"
   ],
   "options": [
@@ -214,10 +214,17 @@
         "what industries"
       ],
       "responses": [
-        "We serve multiple industries including Healthcare, Finance, Supply Chain and Logistics, Education, and Marketing.",
+        "We serve multiple industries,Here are some of them.",
         "Which industry are you interested in?",
         "Please let us know if you want information about products or specific solutions related to that industry."
-      ]
+      ],
+      "options": [
+    { "label": "Healthcare", "url": "https://mqe-demo.vercel.app/Product/HIMS" },
+    { "label": "Finance", "url": "https://mqe-demo.vercel.app/Product/pragyan-ai" },
+    { "label": "Supply Chain and Logistics", "url": "https://mqe-demo.vercel.app/Product/cargo-monitoring-system" },
+    { "label": "Education", "url": "https://mqe-demo.vercel.app/Product/internal-tracker-system" },
+    { "label": "Marketing", "url": "https://mqe-demo.vercel.app/Product/vyuh-shastra" }
+  ]
     },
     {
       "tag": "fallback",

@@ -4,7 +4,7 @@ const path = require("path");
 const intentsPath = path.join(__dirname, "../intents.json");
 const intents = JSON.parse(fs.readFileSync(intentsPath));
 
-// Basic token match helper for intent detection
+// Helper function to detect intent
 function matchIntent(message, patterns) {
   const msgWords = message.split(/\s+/);
   return patterns.some(pattern => {
@@ -27,21 +27,26 @@ module.exports = (req, res) => {
 
   for (const intent of intents.intents) {
     if (matchIntent(message, intent.patterns)) {
-      const reply = intent.responses[Math.floor(Math.random() * intent.responses.length)];
 
-      // ⬇️ If options exist, return them also
-      if (intent.options) {
+      // Special handling for products intent (send response + options + follow-up)
+      if (intent.tag === "products") {
         return res.status(200).json({
-          response: reply,
-          options: intent.options,
+          response: intent.responses[0], // First response: "Here are our products"
+          options: intent.options, // Product Button List
+          followUp: intent.responses[1], // Second response
           tag: intent.tag
         });
       }
+
+      // Normal intents → random response
+      const reply =
+        intent.responses[Math.floor(Math.random() * intent.responses.length)];
 
       return res.status(200).json({ response: reply, tag: intent.tag });
     }
   }
 
+  // No match found → fallback
   return res.status(200).json({
     response: "I'm not sure I understand 🤔. Can you provide more details?",
     tag: "fallback"

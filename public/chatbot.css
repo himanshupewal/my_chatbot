@@ -225,11 +225,12 @@ body {
 
 /* Options (product / quick reply buttons) */
 .bot-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 4px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
 }
+
 
 .option-btn {
     background: rgba(79, 70, 229, 0.9);
@@ -237,6 +238,8 @@ body {
     border: 1px solid rgba(191, 219, 254, 0.2);
     padding: 6px 12px;
     border-radius: 999px;
+    width: 100%;
+    text-align: center;
     font-size: 12px;
     cursor: pointer;
     transition: all 0.2s ease;
