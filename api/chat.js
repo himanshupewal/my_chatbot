@@ -4,7 +4,6 @@ const path = require("path");
 const intentsPath = path.join(__dirname, "../intents.json");
 const intents = JSON.parse(fs.readFileSync(intentsPath));
 
-// Small NLP intent matcher
 function matchIntent(message, patterns) {
   const msgWords = message.split(/\s+/);
   return patterns.some(pattern => {
@@ -27,39 +26,19 @@ module.exports = (req, res) => {
 
   for (const intent of intents.intents) {
     if (matchIntent(message, intent.patterns)) {
-
-      // ✔ Special case: Intents that have buttons + follow up
-      if (intent.options && intent.responses.length > 1) {
-        return res.status(200).json({
-          response: intent.responses[0],   // main message
-          options: intent.options,        // clickable options
-          followUp: intent.responses[1],  // message after options
-          tag: intent.tag
-        });
-      }
-
-      // ✔ If intent has only options but no follow-up
-      if (intent.options) {
-        return res.status(200).json({
-          response: intent.responses[0],
-          options: intent.options,
-          tag: intent.tag
-        });
-      }
-
-      // ✔ Normal Intent → random text response only
-      const reply = intent.responses[
-        Math.floor(Math.random() * intent.responses.length)
-      ];
-
-      return res.status(200).json({
-        response: reply,
+      
+      let responseObj = {
+        response: intent.responses[0],
         tag: intent.tag
-      });
+      };
+
+      if (intent.options) responseObj.options = intent.options;
+      if (intent.followUp) responseObj.followUp = intent.followUp;
+
+      return res.status(200).json(responseObj);
     }
   }
 
-  // ❌ No intent matched → fallback
   return res.status(200).json({
     response: "I'm not sure I understand 🤔. Can you provide more details?",
     tag: "fallback"

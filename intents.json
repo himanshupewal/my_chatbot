@@ -168,15 +168,15 @@
       ]
     },
    {
+  
   "tag": "products",
   "patterns": [
-    "products", "show products", "what products", "product ","product list", "items",
-    "list your products", "what are your products", "tell me about your products",
-    "show me your products", "product categories"
+    "products", "show products", "what products", "product list", "items",
+    "list your products", "what are your products",
+    "tell me about your products", "show me your products", "product categories"
   ],
   "responses": [
-    "Here are our products.",
-    "Would you like us to connect you with our team for a personalized solution?"
+    "Here are our products 👇"
   ],
   "options": [
     { "label": "Healthcare Information System", "url": "https://mqe-demo.vercel.app/Product/HIMS" },
@@ -184,8 +184,17 @@
     { "label": "Cargo Monitoring System", "url": "https://mqe-demo.vercel.app/Product/cargo-monitoring-system" },
     { "label": "Internal Tracker System", "url": "https://mqe-demo.vercel.app/Product/internal-tracker-system" },
     { "label": "Vyuh Shastra", "url": "https://mqe-demo.vercel.app/Product/vyuh-shastra" }
-  ]
+  ],
+  "followUp": {
+    "text": "Would you like us to connect you with our team for a personalized solution?",
+    "quickActions": [
+      { "label": "Contact Team", "url": "https://www.mythoquantum.com/contact" },
+      { "label": "Book a Demo", "url": "https://www.mythoquantum.com/demo" }
+    ]
+  }
 }
+
+
 ,
     {
       "tag": "product_details",
