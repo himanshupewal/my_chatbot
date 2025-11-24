@@ -175,7 +175,7 @@
    {
   "tag": "products",
   "patterns": [
-    "products", "show products", "what products", "product list", "items",
+    "products", "show products", "what products", "product ","product list", "items",
     "list your products", "what are your products", "tell me about your products",
     "show me your products", "product categories"
   ],
@@ -207,7 +207,7 @@
     {
       "tag": "industry",
       "patterns": [
-        "industries",
+        "industries","industry",
         "which industries",
         "industry sectors",
         "sectors",
