@@ -22,7 +22,7 @@ module.exports = (req, res) => {
 
   const message = (req.body.message || "").toLowerCase().trim();
   if (!message) {
-    return res.status(200).json({ response: "Please type something 🙂" });
+    return res.status(200).json({ response: "Please type something " });
   }
 
   for (const intent of intents.intents) {
@@ -31,20 +31,32 @@ module.exports = (req, res) => {
       // Special handling for products intent (send response + options + follow-up)
       if (intent.tag === "products") {
         return res.status(200).json({
-          response: intent.responses[0], // First response: "Here are our products"
-          options: intent.options, // Product Button List
-          followUp: intent.responses[1], // Second response
-          tag: intent.tag
-        });
+  response: intent.responses[0],
+  options: intent.options,
+  followUp: {
+    text: intent.responses[1],
+    "options": [
+    { "label": "✉️ Email Us", "url": "mailto:contact@mythoquantum.com" },
+    { "label": "💬 WhatsApp", "url": "https://wa.me/91XXXXXXXXXX" }
+  ]
+  },
+  tag: intent.tag
+});
       }
 
       if (intent.tag === "industry") {
         return res.status(200).json({
-          response: intent.responses[0], // First response: "Here are our products"
-          options: intent.options, // Product Button List
-          followUp: intent.responses[1], // Second response
-          tag: intent.tag
-        });
+  response: intent.responses[0],
+  options: intent.options,
+  followUp: {
+    text: intent.responses[1],
+    "options": [
+    { "label": "✉️ Email Us", "url": "mailto:contact@mythoquantum.com" },
+    { "label": "💬 WhatsApp", "url": "https://wa.me/91XXXXXXXXXX" }
+  ]
+  },
+  tag: intent.tag
+});
       }
 
       // Normal intents → random response

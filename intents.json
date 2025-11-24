@@ -140,21 +140,16 @@
       ]
     },
     {
-      "tag": "contact",
-      "patterns": [
-        "contact",
-        "how to contact",
-        "phone number",
-        "email",
-        "reach you",
-        "contact details",
-        "how can i contact",
-        "get in touch"
-      ],
-      "responses": [
-        "Please fill out our contact form, and we will get in touch with you soon."
-      ]
-    },
+  "tag": "products_followup",
+  "patterns": ["connect", "contact team", "team", "personalized", "talk to someone"],
+  "responses": [
+    "Would you like us to connect you with our team for a personalized solution?"
+  ],
+  "options": [
+    { "label": "✉️ Email Us", "url": "mailto:contact@mythoquantum.com" },
+    { "label": "💬 WhatsApp", "url": "https://wa.me/91XXXXXXXXXX" }
+  ]
+},
     {
       "tag": "services",
       "patterns": [
