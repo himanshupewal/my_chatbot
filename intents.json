@@ -232,7 +232,7 @@
   "followUp": {
     "text": "Would you like us to connect you with our team for a personalized solution?",
     "quickActions": [
-      { "label":  "📩 Email Team", "url": "mailto:info@mythoquantum.com?subject=Project Inquiry&body=Hello Team, I am interested in your AI solutions." },
+      { "label":  "📩 Email Team", "url": "mailto:info@mytoquantumexplorers@gmail.com?subject=Project Inquiry&body=Hello Team, I am interested in your AI solutions." },
       { "label": "💬 WhatsApp", "url": "https://wa.me/" }
     ]
   }
