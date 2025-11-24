@@ -172,20 +172,23 @@
         "Great! Please fill out this form, and our team will get in touch with you soon."
       ]
     },
-    {
+   {
   "tag": "products",
   "patterns": [
     "products", "show products", "what products", "product list", "items",
     "list your products", "what are your products", "tell me about your products",
     "show me your products", "product categories"
   ],
-  "responses": ["Here are our products 👇"],
+  "responses": [
+    "Here are our products 👇",
+    "Would you like us to connect you with our team for a personalized solution?"
+  ],
   "options": [
-    { "label": "Healthcare Information System", "url": "https://yourwebsite.com/hims" },
-    { "label": "Pragyan AI", "url": "https://yourwebsite.com/pragyan" },
-    { "label": "Cargo Monitoring System", "url": "https://yourwebsite.com/cargo" },
-    { "label": "Internal Tracker System", "url": "https://yourwebsite.com/tracker" },
-    { "label": "Vyuh Shastra", "url": "https://yourwebsite.com/vyuh" }
+    { "label": "Healthcare Information System", "url": "https://mqe-demo.vercel.app/Product/HIMS" },
+    { "label": "Pragyan AI", "url": "https://mqe-demo.vercel.app/Product/pragyan-ai" },
+    { "label": "Cargo Monitoring System", "url": "https://mqe-demo.vercel.app/Product/cargo-monitoring-system" },
+    { "label": "Internal Tracker System", "url": "https://mqe-demo.vercel.app/Product/internal-tracker-system" },
+    { "label": "Vyuh Shastra", "url": "https://mqe-demo.vercel.app/Product/vyuh-shastra" }
   ]
 }
 ,
