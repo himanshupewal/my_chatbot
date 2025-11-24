@@ -38,6 +38,15 @@ module.exports = (req, res) => {
         });
       }
 
+      if (intent.tag === "industry") {
+        return res.status(200).json({
+          response: intent.responses[0], // First response: "Here are our products"
+          options: intent.options, // Product Button List
+          followUp: intent.responses[1], // Second response
+          tag: intent.tag
+        });
+      }
+
       // Normal intents → random response
       const reply =
         intent.responses[Math.floor(Math.random() * intent.responses.length)];
