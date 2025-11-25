@@ -120,7 +120,7 @@
         "about your company","company","about",
         "tell me about your company",
         "what does your company do",
-        "company info"
+        "company info","What is MythoQuantum Explorers?", "Tell me about your company.", "Who are you?"
       ],
       "responses": [
         "MythoQuantum Explorers is a leading AI consultancy firm. We specialize in AI Automation and Data Analytics and have been serving customers since 2023."
@@ -251,5 +251,92 @@
       "responses": [
         "I'm sorry, I don't understand that. Can you please rephrase?"
       ]
+    },
+    {
+      "tag": "Unique_Value_Proposition",
+      "patterns": [
+        "What sets MythoQuantum Explorers apart?",
+
+          "How are you different from other companies?",
+
+          "Why should a business choose your services?",
+
+          "What makes MythoQuantum unique?",
+
+          "What is your competitive advantage?",
+
+          "Tell me why I should work with MythoQuantum."
+      ],
+      "responses": [
+        "Our ability to combine cutting-edge R&D with advanced data analytics and AI enables us to deliver innovative, sustainable, and actionable solutions that are tailored to the unique needs of each client."
+      ]
+    },
+    {"tag":"Service_Customization",
+      "patterns":["Can you customize your services to our needs?",
+
+        "Do you offer tailored solutions?",
+
+        "Can your services be adapted to my business?",
+
+        "Do you personalize your solutions?",
+
+        "Can you handle our specific business requirements?",
+
+        "Are your solutions flexible?",
+
+        "Do you offer custom data analytics?"
+      ],
+
+      "responses":"Absolutely! We specialize in tailoring our solutions to meet the specific challenges and objectives of your business."
+      
+
+    },
+    {"tag":"Research_Innovation",
+      "patterns":["How do you ensure innovation in your research?",
+
+          "What makes your research innovative?",
+
+          "How do you stay ahead in technology?",
+          "What approach do you take for innovation?",
+
+          "Do you use advanced tools for research?",
+
+          "How do you guarantee forward-thinking solutions?"
+      ],
+
+      "responses":"Our team integrates cutting-edge tools, advanced data modeling techniques, and a forward-thinking approach to deliver solutions that redefine industry standards."
+
+    },
+    {"tag":"AI_Implementation_Support",
+      "patterns":["Can you help us implement AI in our business processes?",
+
+        "Do you provide AI integration services?",
+
+        "Can you build AI solutions for us?",
+
+        "Do you offer AI-based automation?",
+
+        "How can you help us adopt AI?",
+
+        "Can you support AI implementation from start to finish?"
+              ],
+
+      "responses":"Yes! We provide end-to-end AI solutions, from strategy development to implementation and maintenance, tailored to your business needs."
+    },
+    {"tag":"Partnership_Engagement",
+      "patterns":["Do you offer partnerships?",
+
+        "Can we have a long-term engagement with you?",
+
+        "Do you work on long-term projects?",
+
+        "Are you open to business collaborations?",
+
+        "Can we partner with MythoQuantum?",
+
+        "Do you take on sustained innovation projects?"
+      ],
+
+      "responses":"Yes, we welcome partnerships and long-term collaborations with businesses seeking sustained innovation and growth through data-driven solutions."
     }
   ]}
