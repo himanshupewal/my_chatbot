@@ -287,7 +287,7 @@
         "Do you offer custom data analytics?"
       ],
 
-      "responses":"Absolutely! We specialize in tailoring our solutions to meet the specific challenges and objectives of your business."
+      "responses":["Absolutely! We specialize in tailoring our solutions to meet the specific challenges and objectives of your business."]
       
 
     },
@@ -304,7 +304,7 @@
           "How do you guarantee forward-thinking solutions?"
       ],
 
-      "responses":"Our team integrates cutting-edge tools, advanced data modeling techniques, and a forward-thinking approach to deliver solutions that redefine industry standards."
+      "responses":["Our team integrates cutting-edge tools, advanced data modeling techniques, and a forward-thinking approach to deliver solutions that redefine industry standards."]
 
     },
     {"tag":"AI_Implementation_Support",
@@ -321,7 +321,7 @@
         "Can you support AI implementation from start to finish?"
               ],
 
-      "responses":"Yes! We provide end-to-end AI solutions, from strategy development to implementation and maintenance, tailored to your business needs."
+      "responses":["Yes!We provide end-to-end AI solutions, from strategy development to implementation and maintenance, tailored to your business needs."]
     },
     {"tag":"Partnership_Engagement",
       "patterns":["Do you offer partnerships?",
@@ -337,6 +337,6 @@
         "Do you take on sustained innovation projects?"
       ],
 
-      "responses":"Yes, we welcome partnerships and long-term collaborations with businesses seeking sustained innovation and growth through data-driven solutions."
+      "responses":["Yes, we welcome partnerships and long-term collaborations with businesses seeking sustained innovation and growth through data-driven solutions."]
     }
   ]}
