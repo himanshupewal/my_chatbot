@@ -345,6 +345,14 @@ body {
     transform: translateY(0);
 }
 
+.robot-icon {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    pointer-events: none; /* Prevent blocking clicks */
+}
+
+
 /* Animations */
 @keyframes slideUp {
     from {
@@ -394,3 +402,4 @@ body {
         transform: scale(1);
     }
 }
+
