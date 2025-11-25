@@ -130,7 +130,7 @@
       "tag": "location",
       "patterns": [
         "where are you located",
-        "your location",
+        "your location","located","location","Situated","Sited",
         "company address","address",
         "where is your office",
         "office location"
@@ -338,5 +338,31 @@
       ],
 
       "responses":["Yes, we welcome partnerships and long-term collaborations with businesses seeking sustained innovation and growth through data-driven solutions."]
+    },
+    {
+  "tag": "career_opportunities",
+  "patterns": [
+    "Are there any career opportunities at MythoQuantum Explorers?",
+    "How can I apply for a job at MythoQuantum?",
+    "Do you have any open positions?",
+    "Where can I find job listings for MythoQuantum?",
+    "What is the hiring process like at MythoQuantum?"
+  ],
+  "responses": [
+    "Absolutely! We'd love to have talented people like you onboard 🚀"
+  ],
+  "options": [
+    {
+      "label": "View Careers Page",
+      "url": "https://www.mythoquantum.com/careers"
     }
+  ],
+  "followUp": {
+    "text": "If you'd like to know more about company culture or benefits, just ask!",
+    "quickActions": [
+      { "label": "About Culture", "url": "https://www.mythoquantum.com/culture" }
+    ]
+  }
+}
+
   ]}
